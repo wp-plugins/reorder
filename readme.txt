@@ -21,9 +21,9 @@ This plugin only support reordering of top-level posts (no hierarchy).
 3. Done
 
 == Screenshots ==
-1. Description
-2. Description
-3. Description
+1. A "Reorder" links automatically gets added under each custom post type.
+2. List of top-level posts.
+3. Drag and drop to reorder.
 
 == Changelog ==
 = 1.0 =
