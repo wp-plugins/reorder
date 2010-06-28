@@ -20,8 +20,6 @@ It displays posts that are public and published. This plugin only support reorde
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Done
 
-== Frequently Asked Questions ==
--
 == Screenshots ==
 1. Description
 2. Description
