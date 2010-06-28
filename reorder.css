@@ -17,6 +17,10 @@
 	cursor: move;	
 }
 
+#order-posts-list li.draft strong, #order-posts-list li.future strong, #order-posts-list li.private strong {
+	color: #b1b1b1;
+}
+
 #order-posts-list {
 
 	margin-bottom: -1px;
@@ -41,6 +45,16 @@
 #order-posts-list strong {
 	color: #21759B;
 	padding-right: 20px;
+}
+
+#order-posts-list strong span {
+	background: #e0e0e0;
+	font-weight: normal;
+	color: #fff;
+	padding: 2px 6px;
+	-moz-border-radius: 3px;
+	margin-left: 10px;
+	font-size: 9px;
 }
 
 .order-inner {
