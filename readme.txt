@@ -12,7 +12,7 @@ Enables simple drag and drop reordering of all custom post types.
 
 Enables simple drag and drop reordering of all custom post types. Without this plugin all new custom content types must be ordered by date or alphabetically.
 
-It displays posts that are public and published. This plugin only support reordering of top-level posts.
+This plugin only support reordering of top-level posts (no hierarchy).
 
 == Installation ==
 
