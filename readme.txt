@@ -10,7 +10,7 @@ Enables simple drag and drop reordering of all custom post types.
 
 == Description ==
 
-Enables simple drag and drop reordering of all custom post types.
+Enables simple drag and drop reordering of all custom post types. This is like the "postMash" plugin, but for custom content types.
 
 This plugin only support reordering of top-level posts (no hierarchy).
 
