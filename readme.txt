@@ -28,6 +28,8 @@ This plugin only support reordering of top-level posts (no hierarchy).
 == Changelog ==
 = 1.0 =
 * First public version
+= 1.1 =
+* fix conflict with postmash/pagemash plugins.
 
 == Upgrade Notice ==
 -
