@@ -6,11 +6,11 @@ Requires at least: 3.0
 Tested up to: 3.0+
 Stable tag: 1.0
 
-Enables simple drag and drop reordering of all custom post types.
+Enables simple drag and drop reordering of all post types (including custom post types).
 
 == Description ==
 
-Enables simple drag and drop reordering of all custom post types. This is like the "postMash" plugin, but for custom content types.
+Enables simple drag and drop reordering of all post types. This is like the "postMash" plugin, but works with 3.0.
 
 This plugin only support reordering of top-level posts (no hierarchy).
 
@@ -30,6 +30,7 @@ This plugin only support reordering of top-level posts (no hierarchy).
 * First public version
 = 1.1 =
 * fix conflict with postmash/pagemash plugins.
+* enable "reorder" for standard "posts"
 
 == Upgrade Notice ==
 -

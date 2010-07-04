@@ -84,7 +84,7 @@ function reorder_menu(){
 	global $minlevel;	
 		
 	//add menu to standard Posts - uncomment line below to enable
-	//add_submenu_page('edit.php', 'Order Posts', 'Reorder', $minlevel,  __FILE__, 'reorder_ui'); 
+	add_submenu_page('edit.php', 'Order Posts', 'Reorder', $minlevel,  __FILE__, 'reorder_ui'); 
 		
 	//exclude this plugin from the following post_types
 	$excludedPostTypes = array('attachment', 'revision', 'page', 'nav_menu_item');
