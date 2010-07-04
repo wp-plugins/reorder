@@ -9,6 +9,8 @@ Author URI: http://benjitastic.com
 	
 */
 
+$minlevel = 7;  /*[deafult=7]*/
+
 // Build the admin UI
 function reorder_ui(){
 
@@ -79,24 +81,31 @@ function reorder_script() {
 
 // Add to admin menus
 function reorder_menu(){
-	global $minlevel, $wp_version;	
+	global $minlevel;	
 		
-	//add menu to Posts
-	//add_submenu_page('edit.php', 'Order Posts', 'Reorder', $minlevel,  __FILE__, 'postMash_main'); 
+	//add menu to standard Posts - uncomment line below to enable
+	//add_submenu_page('edit.php', 'Order Posts', 'Reorder', $minlevel,  __FILE__, 'reorder_ui'); 
 		
 	//exclude this plugin from the following post_types
 	$excludedPostTypes = array('attachment', 'revision', 'page', 'nav_menu_item');
 	
 	//add menu to each post_type
-foreach(get_post_types('','names') as $r) {
-	if(!in_array($r, $excludedPostTypes)) {
-		add_submenu_page('edit.php?post_type='.$r.'', "Reorder", "Reorder", $minlevel,  $r, 'reorder_ui');
-	}
-}	
+	foreach(get_post_types('','names') as $r) {
+		if(!in_array($r, $excludedPostTypes)) {
+			add_submenu_page('edit.php?post_type='.$r.'', "Reorder", "Reorder", $minlevel,  $r, 'reorder_ui');
+		}
+	}	
+}
+
+function reorder_orderPosts($orderBy) {
+	global $wpdb;
+	$orderBy = "{$wpdb->posts}.menu_order ASC";
+	return($orderBy);
 }
 
 add_action('admin_print_scripts', 'reorder_script');
 add_action('admin_head', 'reorder_head');
 add_action('admin_menu', 'reorder_menu');
+add_filter('posts_orderby', 'reorder_orderPosts'); //add filter for post ordering
 
 ?>
