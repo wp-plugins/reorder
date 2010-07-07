@@ -8,6 +8,8 @@ Stable tag: 2.0
 
 Reorder enables Wordpress users and developers to easily reorder any Wordpress content by simply dragging and dropping. Supports hierarchical reordering of pages.
 
+MUST HAVE VERSION 3.0 OF WORDPRESS
+
 == Description ==
 
 Enables simple drag and drop reordering of all post types.
