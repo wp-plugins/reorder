@@ -15,13 +15,14 @@ function build_pages($post_parent = 0) {
 	foreach($posts as $p) {								
 		$status = ($p->post_status != 'publish') ? "<span>$p->post_status</span>" : "";
 		$children = array_reverse(get_posts('orderby=menu_order&order=DESC&post_status=""&post_type='.$_GET['post_type'].'&numberposts=-1&depth=1&post_parent='.$p->ID));
+		$title = ($p->post_title) ? $p->post_title.$status : '(no title)'.$status;
 		
 		echo '<li id="listItem_'.$p->ID.'" class="clear-element page-item '.$p->post_status.'">
 			<table class="reorder-inner">
 			<tr>
 			<td>';
 			//if($children) echo '<a href="#" class="expand-collapse expanded"></a>';
-		echo '<strong>'.$p->post_title.$status.'</strong>
+		echo '<strong>'.$title.'</strong>
 			</td>
 			<td width="40" class="reorder-id">
 			'.$p->ID.'
@@ -93,7 +94,8 @@ function reorder_menu(){
 	global $minlevel;	
 		
 	//add menu to standard Posts
-	add_submenu_page('edit.php', 'Order Posts', 'Reorder', $minlevel,  __FILE__, 'reorder_ui'); 
+	$page = add_submenu_page('edit.php', 'Order Posts', 'Reorder', $minlevel,  __FILE__, 'reorder_ui'); 
+	add_action( "admin_print_scripts-$page", 'reorder_script' );
 		
 	//exclude this plugin from the following post_types
 	$excludedPostTypes = array('attachment', 'revision', 'nav_menu_item');
@@ -101,7 +103,8 @@ function reorder_menu(){
 	//add menu to each post_type
 	foreach(get_post_types('','names') as $r) {
 		if(!in_array($r, $excludedPostTypes)) {
-			add_submenu_page('edit.php?post_type='.$r.'', "Reorder", "Reorder", $minlevel,  $r, 'reorder_ui');
+			$page = add_submenu_page('edit.php?post_type='.$r.'', "Reorder", "Reorder", $minlevel,  $r, 'reorder_ui');
+			add_action( "admin_print_scripts-$page", 'reorder_script' );			
 		}
 	}	
 }
@@ -113,7 +116,7 @@ function reorder_orderPosts($orderBy) {
 	return($orderBy);
 }
 
-add_action('admin_print_scripts', 'reorder_script');
+//add_action('admin_print_scripts', 'reorder_script');
 add_action('admin_head', 'reorder_head');
 add_action('admin_menu', 'reorder_menu');
 add_filter('posts_orderby', 'reorder_orderPosts'); //add filter for post ordering

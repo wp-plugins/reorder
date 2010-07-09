@@ -6,7 +6,12 @@
 
 #dragHelper td {
 	font-size: 11px!important;
-	padding: 3px 3px;
+	padding: 3px!important;
+	margin: 0!important;
+}
+
+#dragHelper li {
+	margin: 0!important;
 }
 
 #dragHelper strong {
