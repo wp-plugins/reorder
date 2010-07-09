@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=benji
 Tags: reorder, order, orderby, posts, custom posts, custom, post type, menu order, menu_order, drag, drop
 Requires at least: 3.0
 Tested up to: 3.0+
-Stable tag: 2.0
+Stable tag: 2.1
 
 Reorder enables Wordpress users and developers to easily reorder any Wordpress content by simply dragging and dropping. Supports hierarchical reordering of pages.
 
@@ -20,6 +20,20 @@ Enables simple drag and drop reordering of all post types.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Done
 
+No extra configuration needs to be done when using the standard loop or query_posts() to reorder posts.
+
+Note: 
+
+To use get_posts() it is necessary to reverse the array. 
+
+Instead of this code: get_posts();
+
+Use this: array_reverse(get_posts('orderby=menu_order&order=DESC'));
+
+Simply changing the order to ASC does not do the trick.
+
+
+
 == Screenshots ==
 1. A "Reorder" links automatically gets added under each custom post type.
 2. List of top-level posts.
@@ -33,6 +47,9 @@ Enables simple drag and drop reordering of all post types.
 * enable "reorder" for standard "posts"
 = 2.0 =
 * major rewrite to allow for hierarchical reordering -- essentially a new plugin.
+= 2.1 =
+* fix issue of multiple menu_order values of 0. Sorts posts by menu_order and then date published.
+* add fix for get_posts()
 
 == Upgrade Notice ==
 -

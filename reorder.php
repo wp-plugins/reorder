@@ -11,10 +11,10 @@ Author URI: http://benjitastic.com
 $minlevel = 7;  /*[default=7]*/
 
 function build_pages($post_parent = 0) {	
-	$posts = get_posts('post_status=""&post_type='.$_GET['post_type'].'&orderby=menu_order&order=ASC&numberposts=-1&depth=1&post_parent='.$post_parent);	
+	$posts = array_reverse(get_posts('post_status=""&post_type='.$_GET['post_type'].'&orderby=menu_order&order=DESC&numberposts=-1&depth=1&post_parent='.$post_parent));
 	foreach($posts as $p) {								
 		$status = ($p->post_status != 'publish') ? "<span>$p->post_status</span>" : "";
-		$children = get_posts('post_status=""&post_type='.$_GET['post_type'].'&numberposts=-1&depth=1&post_parent='.$p->ID);
+		$children = array_reverse(get_posts('orderby=menu_order&order=DESC&post_status=""&post_type='.$_GET['post_type'].'&numberposts=-1&depth=1&post_parent='.$p->ID));
 		
 		echo '<li id="listItem_'.$p->ID.'" class="clear-element page-item '.$p->post_status.'">
 			<table class="reorder-inner">
@@ -108,7 +108,8 @@ function reorder_menu(){
 
 function reorder_orderPosts($orderBy) {
 	global $wpdb;
-	$orderBy = "{$wpdb->posts}.menu_order ASC";
+	$orderBy = "{$wpdb->posts}.menu_order ASC, post_date DESC";
+//	$orderBy = "{$wpdb->posts}.menu_order ASC";
 	return($orderBy);
 }
 
