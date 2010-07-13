@@ -4,7 +4,7 @@ Donate link:
 Tags: 
 Requires at least: 3.0
 Tested up to: 3.0+
-Stable tag: 3.0
+Stable tag: 2.0
 
 Discontinued
 
